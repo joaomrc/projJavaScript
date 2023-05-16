@@ -1,12 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SportNews</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="index.css" />
+  <title>Notícias da NBA</title>
+  
 </head>
 <body>
-    
+  <header>
+    <h1>Notícias da NBA</h1>
+  </header>
+  <div id="news-list"></div>
+
+  <script>
+    // Faz uma requisição HTTP para a API da ESPN
+    const url = "http://site.api.espn.com/apis/site/v2/sports/basketball/nba/news";
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        // Cria um elemento HTML para cada notícia e adiciona à lista
+        const newsList = document.getElementById("news-list");
+        data.articles.forEach(article => {
+          const news = document.createElement("div");
+          news.classList.add("news");
+          news.innerHTML = `
+            <img class="image" src="${article.images[0].url}" alt="Imagem da notícia">
+            <h2 class="title">${article.headline}</h2>
+            
+            <p class="description">${article.description}</p>
+            <p class="link"><a href="${article.links.web.href}" target="_blank">Leia mais</a></p>
+          `;
+          newsList.appendChild(news);
+        });
+      })
+      .catch(error => console.log(error));
+  </script>
+
 </body>
 </html>

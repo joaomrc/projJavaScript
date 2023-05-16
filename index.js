@@ -1,8 +1,10 @@
-const urlIPMA_Distritos = 'http://site.api.espn.com/apis/site/v2/sports/basketball/nba/news';
-// const urlIPMA = 'https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/1141600.json';
+fetch('http://site.api.espn.com/apis/site/v2/sports/basketball/nba/news')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+  
+  })
+  .catch(error => console.error(error));
 
-// Obter referencia para o elemento <select>
-var select = document.querySelector('select'); 
-
-// Obter referencia para o elemento <section>
-var section = document.querySelector('section'); 
+const firstNewsTitle = data.articles[0].headline;
+    console.log(firstNewsTitle);
