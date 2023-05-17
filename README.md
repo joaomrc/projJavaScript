@@ -4,7 +4,7 @@
 <table>
 <tr>
 <td>
-(Tema e objetivo do projeto)
+Site de Notícias de desporto
 </td>
 </tr>
 </table>
