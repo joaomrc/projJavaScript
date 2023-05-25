@@ -4,7 +4,7 @@
 <table>
 <tr>
 <td>
-(Tema e objetivo do projeto)
+Site de Notícias da NBA
 </td>
 </tr>
 </table>
