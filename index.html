@@ -14,7 +14,7 @@
 
   <script>
     // Faz uma requisição HTTP para a API da ESPN
-    const url = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/news";
+    const url = "http://site.api.espn.com/apis/site/v2/sports/basketball/nba/news";
     fetch(url)
       .then(response => response.json())
       .then(data => {
@@ -26,9 +26,12 @@
           news.innerHTML = `
             <img class="image" src="${article.images[0].url}" alt="Imagem da notícia">
             <h2 class="title">${article.headline}</h2>
-            
             <p class="description">${article.description}</p>
-            <p class="link"><a href="${article.links.web.href}" target="_blank">Leia mais</a></p>
+            <div class="news-details">
+              <p class="published"> ${new Date(article.published).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+              <p class="author">By ${article.byline}</p>
+              <p class="link"><a href="${article.links.web.href}" target="_blank">More</a></p>
+            </div>
           `;
           newsList.appendChild(news);
         });
