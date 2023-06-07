@@ -3,41 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="index.css" />
-  <title>Notícias da NBA</title>
+  <script src="index.js"></script>
+  <title>NBA News and Rumours</title>
   
 </head>
 <body>
   <header>
-    <h1>Last News</h1>
+    <img src="https://cdn-icons-png.flaticon.com/512/2015/2015660.png" alt="Icon">
+    <h1>| NBA News</h1>
   </header>
   <div id="news-list"></div>
 
-  <script>
-    // Faz uma requisição HTTP para a API da ESPN
-    const url = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/news";
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        // Cria um elemento HTML para cada notícia e adiciona à lista
-        const newsList = document.getElementById("news-list");
-        data.articles.forEach(article => {
-          const news = document.createElement("div");
-          news.classList.add("news");
-          news.innerHTML = `
-            <img class="image" src="${article.images[0].url}" alt="Imagem da notícia">
-            <h2 class="title">${article.headline}</h2>
-            <p class="description">${article.description}</p>
-            <div class="news-details">
-              <p class="published"> ${new Date(article.published).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
-              <p class="author">By ${article.byline}</p>
-              <p class="link"><a href="${article.links.web.href}" target="_blank">More</a></p>
-            </div>
-          `;
-          newsList.appendChild(news);
-        });
-      })
-      .catch(error => console.log(error));
-  </script>
+  <footer>
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h3>NBA News</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Scores</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Stats</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <p>© 2023 NBA News. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
